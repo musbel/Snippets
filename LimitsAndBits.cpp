@@ -21,7 +21,7 @@ const char* evil( std::string s )
 	return t;
 }
 
-bool getBit( int n, int index )
+int getBit( int n, int index )
 {
 	return ( ( n & ( 1 << index ) ) > 0 );
 }
@@ -117,4 +117,11 @@ int main( int argc, char* argv[] )
 	
 	cout << endl;
 	printLimits();
+	
+	int x1 = numeric_limits<int>::max();
+	int x2 = numeric_limits<int>::max();
+	int x3 = x1 + x2;
+	cout << "x1 = " << x1 << endl;
+	cout << "x3 = " << x3 << endl;
+	printBin( x3 );
 }
