@@ -59,7 +59,7 @@ if __name__ == "__main__":
 
 	b_original = 0b10000000000
 	b_insert = 0b10101
-	print("updateBits: {} -> {} -> {}".format(toBinary(b_insert), toBinary(b_original), toBinary(updateBits(b_original, b_insert, 2, 6))))
+	print("updateBits: {} -> {} -> {}".format(toBinary(b_insert), toBinary(b_original, 12), toBinary(updateBits(b_original, b_insert, 2, 6), 12)))
 	
 	integerList = [2, 4, 2, 3, 5, 3, 7, 5, 7]
 	print("Lonely Integer: {} -> {}".format(integerList, lonelyInteger(integerList)))
