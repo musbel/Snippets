@@ -23,9 +23,9 @@ public class MinIntHeap
 	void print()
 	{
 		System.out.print("Heap: ");
-		for (int item : items)
+		for (int i = 0; i < size; i++)
 		{
-			System.out.print(item + " ");
+			System.out.print(items[i] + " ");
 		}
 		System.out.println();
 
