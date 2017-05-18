@@ -10,3 +10,13 @@
 *.plist
 
 *.xcscheme
+
+PointersAndReferences/bin/DeferenceExamples
+
+Test/Test/main.cpp
+
+bin/Epsilon
+
+*.class
+*.pyc
+bin

@@ -81,6 +81,29 @@ void printLimits()
 	cout << "Maximum value for unsigned int: " << numeric_limits<unsigned int>::max() << endl;
 }
 
+class A
+{
+public:
+	A() {}
+	virtual ~A() {}	
+	
+	virtual void print() { cout << "A" << endl; }
+//private:
+//		int n;
+//		int m;
+};
+
+class B : public A
+{
+public:
+	virtual void print() { cout << "B" << endl; }
+};
+
+class C
+{
+	
+};
+
 int main( int argc, char* argv[] ) 
 {
 	double x = multiply( 2 );
@@ -100,6 +123,26 @@ int main( int argc, char* argv[] )
 	cout << "float = " << sizeof( float ) << endl;
 	cout << "string = " << sizeof( string ) << endl;
 	cout << "char = " << sizeof( char ) << endl;
+	cout << "char* (pointer) = " << sizeof( char* ) << endl;
+
+	// Notice the difference in size when using a vtable	
+	cout << "A = " << sizeof( A ) << endl;
+	cout << "B = " << sizeof( B ) << endl;
+	cout << "C = " << sizeof( C ) << endl;
+
+	// However, the pointer size is always the same
+	A* obj_a = new A();
+	B* obj_b = new B();
+	C* obj_c = new C();
+	cout << "A (obj) = " << sizeof( obj_a ) << endl;
+	cout << "B (obj) = " << sizeof( obj_b ) << endl;
+	cout << "C (obj) = " << sizeof( obj_c ) << endl;
+	
+	obj_a->print();
+	obj_b->print();
+	// The object will get the vtable from B even though the pointer is A
+	A* obj_ba = new B();
+	obj_ba->print();
 	
 	cout << endl;
 	

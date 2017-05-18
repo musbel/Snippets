@@ -27,17 +27,17 @@ void func3( int*& rpInt )
 
 int main( int argc, char *argv[] ) 
 {
-	int nvar = 2;
-	int* pvar = &nvar;
+	int n = 2;
+	int* p = &n;
 	
-	func1( pvar );
-	cout << "func1: " << *pvar << endl;
+	func1( p );
+	cout << "func1: " << *p << endl;
 
-	func2( &pvar );
-	cout << "func2: " << *pvar << endl;
+	func2( &p );
+	cout << "func2: " << *p << endl;
 
-	func3( pvar );
-	cout << "func3: " << *pvar << endl;
+	func3( p );
+	cout << "func3: " << *p << endl;
 	
 	return 0;
 }

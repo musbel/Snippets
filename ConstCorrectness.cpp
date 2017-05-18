@@ -7,8 +7,8 @@ class MyArray
 {
 public:
 	MyArray() { cout << "MyArray: Default constructor\n"; }
-//	MyArray( MyArray& copy ) { cout << "MyArray: Copy constructor\n"; }
-	MyArray( const MyArray& copy ) { cout << "MyArray: Copy constructor\n"; }
+	MyArray( MyArray& copy ) { cout << "MyArray: Copy constructor\n"; }
+	MyArray( const MyArray& copy ) { cout << "MyArray: Const Copy constructor\n"; }
 	MyArray& operator=( MyArray& copy ) { cout << "MyArray: Assignment operator\n"; }
 };
 
@@ -27,7 +27,7 @@ public:
 
 const MyArray<int> read_data( int*, char** ) 
 {
-	MyArray<int> a;
+	const MyArray<int> a;
 	return a;
 }
 
@@ -37,8 +37,11 @@ int main( int argc, char *argv[] )
 {
 	cout << "const MyArray<int> read_x = read_data( &argc, argv );" << endl;
 	const MyArray<int> read_x = read_data( &argc, argv );
+	cout << endl;
+
 	cout << "const MyArray<int> read_y = read_data( &argc, argv );" << endl;
 	const MyArray<int> read_y = read_data( &argc, argv );
+	cout << endl;
 	
 	MyData user_data( read_x, read_y );
 	MyData edit_buffer( user_data );

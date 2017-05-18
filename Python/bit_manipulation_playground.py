@@ -48,6 +48,16 @@ def updateBits(n, m, i, j):
 	merged = (n & mask) | (m << i)
 	return merged
 
+def getMax(a, b): # Without using if-else or any comparison operator
+	print("> getMax(%d, %d)" % (a, b))
+	c = a - b
+	print " : c =", c
+	k = (c >> 31) & 0b1
+	print " : k =", toBinary((c >> 31), 32)
+	maxVal = a - k * c
+	print " : m =", maxVal
+	return maxVal
+
 
 if __name__ == "__main__":
 	print("41 -> {}".format(toBinary(41)))
@@ -63,3 +73,8 @@ if __name__ == "__main__":
 	
 	integerList = [2, 4, 2, 3, 5, 3, 7, 5, 7]
 	print("Lonely Integer: {} -> {}".format(integerList, lonelyInteger(integerList)))
+	
+	getMax(3, 10)
+	
+	print toBinary(5, 8)
+	print toBinary(-5, 8)

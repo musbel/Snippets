@@ -63,5 +63,6 @@ if __name__ == "__main__":
 	assert(gcd(48, 18) == 6)
 	assert(gcd_factorisation(48, 18) == 6)
 	
+	print gcd(180352, 26048)
 	
 	

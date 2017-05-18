@@ -167,6 +167,31 @@ class Sorting
 		return left;
 	}
 	
+	public static int binarySearch(int[] array, int n)
+	{
+		return binarySearch(array, n, 0, array.length - 1);
+	}
+	
+	private static int binarySearch(int[] array, int n, int left, int right)
+	{
+		if (right >= left)
+		{
+			int middle = left + (right - left) / 2;	// Less likely to overflow than (right + left) / 2
+			
+			// If the value is the middle element being examined then return the index
+			if (array[middle] == n)
+				return middle;
+				
+			if (n < array[middle])
+				return binarySearch(array, n, left, middle - 1);
+
+			return binarySearch(array, n, middle + 1, right);
+		}
+		
+		// We didn't find the element, return -1 as index
+		return -1;
+	}
+	
 	public static void printArray(int[] array, String description)
 	{
 		System.out.print(description + ": ");
@@ -174,6 +199,20 @@ class Sorting
 			System.out.print(elm + " ");
 			
 		System.out.println();
+	}
+	
+	public static void binarySearchTest(int[] array, int n)
+	{
+		int idx = binarySearch(array, n);
+		if (idx == -1)
+		{
+			System.out.println("Element " + n + " not found in array");
+		}
+		else 
+		{
+			System.out.println("Element " + n + " found at index " + idx + " | Value = " + array[idx]);
+			assert(n == array[idx]);	
+		}
 	}
 	
 	public static void main(String[] args) 
@@ -184,7 +223,11 @@ class Sorting
 //		bubbleSort(array);
 //		mergeSort(array);
 		quickSort(array);
-
+		
 		printArray(array, "Sorted array");
+		
+		// Now that our array is sorted we can use binary search to look for elements
+		binarySearchTest(array, 12);
+		binarySearchTest(array, 13);
 	}
 }
