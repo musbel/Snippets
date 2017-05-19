@@ -40,11 +40,12 @@ def heapSort(arr):
 		heapify(arr, i, 0)
  
 
-# Test
-arr = [12, 11, 13, 5, 6, 7]
-heapSort(arr)
-n = len(arr)
-print ("Sorted array is")
-for i in range(n):
-	print ("%d" %arr[i])
+if __name__ == "__main__":
+	# Test
+	arr = [12, 11, 13, 5, 6, 7]
+	heapSort(arr)
+	n = len(arr)
+	print ("Sorted array is")
+	for i in range(n):
+		print ("%d" %arr[i])
 	
