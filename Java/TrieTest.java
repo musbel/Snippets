@@ -3,6 +3,7 @@ import java.util.*;
 import java.text.*;
 import java.math.*;
 import java.util.regex.*;
+import java.lang.StringBuilder;
 
 class Solution 
 {
@@ -99,30 +100,96 @@ class Solution
 			// Ask the child for its count
 			return child.findCount(s, index + 1);
 		}
-	}
-	
-	public static void main(String[] args) {
-		Node root = new Node('*');
+
+		public void check(String s)
+		{
+			check(s, 0);
+		}
 		
-		Scanner in = new Scanner(System.in);
-		int n = in.nextInt();
-		for(int a0 = 0; a0 < n; a0++){
-			String op = in.next();
-			String contact = in.next();
+		private void check(String s, int index)
+		{
+			if (index == s.length())
+			{
+				System.out.println("String is fine");
+				return;
+			}
 			
-			if (op.compareTo("add") == 0)
+			char current = s.charAt(index);
+			Node child = getNode(current);
+			if (child == null)
 			{
-				root.add(contact);
+				System.out.print("[" + current + "] <- not found!");
+				System.out.println();
+				return;
 			}
-			else if (op.compareTo("find") == 0)
+			else 
 			{
-				System.out.println(root.findCount(contact));
+				System.out.print(current);
 			}
-			else if (op.compareTo("print") == 0)
+			
+			child.check(s, index + 1);
+		}
+		
+		public Node findLeaf(String s, int index)
+		{			
+			if (index == s.length())
 			{
-				root.print();
+				return this;
+			}
+
+			char current = s.charAt(index);
+			Node child = getNode(current);
+			if (child == null) return null;
+	
+			return child.findLeaf(s, index + 1);
+		}
+		
+		public void findRecommendations(String s, ArrayList<String> list)
+		{
+			Node leaf = findLeaf(s, 0);
+			if (leaf == null) return;
+			
+			leaf.findRecommendations(s, list, "");
+		}
+		
+		private void findRecommendations(String s, ArrayList<String> list, String r)
+		{
+			s += r;
+			
+			if (children.size() == 0)
+			{
+				list.add(s);
+				return;
+			}
+			
+			for (Map.Entry<Character, Node> entry : children.entrySet())
+			{
+				Node child = entry.getValue();
+				child.findRecommendations(s, list, "" + entry.getKey());
 			}
 		}
+	}
+	
+	public static void main(String[] args) 
+	{
+		Node root = new Node('*');
+		root.add("Alice");
+		root.add("Alicia");
+		root.add("Alex");
+		root.add("Bob");
+		
+		root.check("Alo");
+		
+		ArrayList<String> recommendations = new ArrayList<String>();
+		root.findRecommendations("Al", recommendations);
+		System.out.println("Recommendations:");
+		for (String r : recommendations)
+		{
+			System.out.println(" - " + r);
+		}
+		
+		System.out.println(root.findCount("Al"));
+		//root.print();
 	}
 }
 

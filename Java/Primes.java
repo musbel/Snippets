@@ -4,7 +4,8 @@ import java.text.*;
 import java.math.*;
 import java.util.regex.*;
 
-class Solution {
+class Solution 
+{
 	public static boolean isPrime(int n)
 	{
 		// If less than 2 then it's not a prime, 2 is a prime
@@ -53,12 +54,14 @@ class Solution {
 		}
 	}
 	
-	public static void main(String[] args) {
+	public static void main(String[] args) 
+	{
 		primeNumbers(7);
 		
 		Scanner in = new Scanner(System.in);
 		int p = in.nextInt();
-		for(int a0 = 0; a0 < p; a0++){
+		for(int a0 = 0; a0 < p; a0++)
+		{
 			int n = in.nextInt();
 			if (isPrime(n))
 				System.out.println("Prime");
