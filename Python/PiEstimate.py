@@ -28,7 +28,7 @@ def estimatePi(n=100):
 	# ratio = pi / 4
 	#
 	# Therefore the estimate of pi becomes (solving for pi):
-	# pi = ratio * r
+	# pi = ratio * 4
 	#
 	# where the ratio is the number of hits inside the circle divided
 	# by the total number of hits
